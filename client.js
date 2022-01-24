@@ -20,7 +20,7 @@ client.connect(PORT, HOST, function() {
             client.write(`${my_key}`);
             state = 1
         }
-        if (data != 'start!' && state == 1){
+        if (data != 'start!' && state == 1 && data != 'BYE'  ){
             num = parseInt(data) + 3
 
             if(data != NaN)
@@ -31,6 +31,7 @@ client.connect(PORT, HOST, function() {
         if (data == 'BYE' && state == 1){
             client.destroy();
             console.log('รับ : ' + data);
+
             state = 2 // End
         }
         if(data == 'INVALID'&& state == 1){

@@ -31,7 +31,7 @@ net.createServer(function (sock) {
             console.log('รับ ' +`${data*2}`)
             sock.write(`${data*2}`)                     
         }
-        else if(parseInt(data) > 10 &&state ==2 && data != 'BYE'){
+        else if(parseInt(data) > 10 &&state ==2){
             console.log('BYE')
             sock.write('BYE');
         }
@@ -44,10 +44,7 @@ net.createServer(function (sock) {
             sock.write('NotKey');
             state = 3 //End
         }
-        else if (data == 'NaN'){
-            console.log('Client turn off ');
-            state = 3 //End
-        }
+
     });
     
 }).listen(PORT, HOST);
